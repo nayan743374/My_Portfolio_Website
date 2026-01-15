@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultimate Portfolio - Nayan Naskar</title>
+  <style>
+    /* RESET */
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family:"Poppins",sans-serif;
+      background:#0f172a;
+      color:#f1f5f9;
+      overflow-x:hidden;
+    }
+
+    /* BACKGROUND */
+    #particles-js{
+      position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;
+      background:linear-gradient(120deg,#0f172a,#1e293b,#0f172a);
+      background-size:600% 600%;
+      animation:gradientBG 20s ease infinite;
+    }
+    @keyframes gradientBG{
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
+    }
+    /* MENU TOGGLE (HAMBURGER) */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #f1f5f9;
+}
+
+/* Mobile Navbar */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: rgba(15, 23, 42, 0.95);
+    flex-direction: column;
+    width: 200px;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 12px 0 0 12px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+  .nav-links.active {
+    transform: translateX(0);
+  }
+}
+/* CV Button Style */
+.cv-btn {
+  background: linear-gradient(90deg, #38bdf8, #9333ea);
+  color: #fff !important;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+.cv-btn:hover {
+  box-shadow: 0 0 15px #38bdf8;
+  transform: scale(1.05);
+}
+
+
+    /* NAVBAR */
+    header{
+      position:fixed;top:0;width:100%;
+      background:rgba(15,23,42,0.5);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(255,255,255,0.1);
+      z-index:1000;
+      padding:1rem 3rem;
+    }
+    .navbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
+    .logo{
+      font-size:1.8rem;font-weight:700;
+      background:linear-gradient(90deg,#38bdf8,#9333ea,#f59e0b);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    }
+    .nav-links{list-style:none;display:flex;gap:25px;flex-wrap:wrap;}
+    .nav-links a{
+      text-decoration:none;color:#f1f5f9;font-weight:500;
+      padding:8px 14px;border-radius:8px;transition:0.3s;
+    }
+    .nav-links a:hover{
+      background:linear-gradient(90deg,#38bdf8,#9333ea);
+      color:#fff;box-shadow:0 0 15px #38bdf8;
+    }
+
+    /* HERO */
+    .hero{
+      height:100vh;
+      display:flex;flex-direction:column;justify-content:center;align-items:center;
+      text-align:center;padding:0 20px;
+    }
+    .hero img{
+      width:180px;height:180px;border-radius:50%;object-fit:cover;
+      border:5px solid transparent;
+      background:linear-gradient(45deg,#38bdf8,#9333ea) border-box;
+      box-shadow:0 0 40px rgba(56,189,248,0.8);
+      margin-bottom:25px;
+      animation:float 5s ease-in-out infinite;
+    }
+    .hero h1{
+      font-size:3.4rem;margin-bottom:10px;
+      background:linear-gradient(90deg,#38bdf8,#9333ea,#f59e0b);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    }
+    .typewriter{
+      font-size:1.4rem;color:#e2e8f0;
+      border-right:3px solid #38bdf8;
+      white-space:nowrap;overflow:hidden;width:0;
+      animation:typing 4s steps(30,end) forwards, blink 0.7s infinite;
+    }
+    .btn{
+      margin-top:30px;padding:14px 30px;
+      background:linear-gradient(90deg,#38bdf8,#9333ea);
+      border-radius:50px;color:#fff;font-weight:bold;text-decoration:none;
+      transition:0.3s;box-shadow:0 0 25px rgba(147,51,234,0.6);
+    }
+    .btn:hover{transform:scale(1.1);box-shadow:0 0 40px rgba(56,189,248,0.9);}
+
+    /* SECTIONS */
+    section{padding:100px 20px;max-width:1100px;margin:auto;}
+    section h2{text-align:center;font-size:2.4rem;margin-bottom:50px;color:#38bdf8;}
+
+    /* SKILL TABS */
+    .skill-tabs{display:flex;justify-content:center;gap:15px;margin-bottom:30px;}
+    .tab-btn{
+      padding:10px 20px;border:none;border-radius:20px;
+      background:#1e293b;color:#fff;font-weight:bold;cursor:pointer;
+      transition:0.3s;
+    }
+    .tab-btn.active,.tab-btn:hover{background:linear-gradient(90deg,#38bdf8,#9333ea);}
+    .tab-content{display:none;}
+    .tab-content.active{display:block;}
+
+    /* SKILL BARS */
+    .skills-bars{max-width:700px;margin:30px auto;}
+    .skill-bar{margin-bottom:20px;}
+    .skill-bar span{font-size:1.1rem;color:#38bdf8;}
+    .skill-bar .bar{
+      position:relative;height:20px;background:#1e293b;border-radius:20px;overflow:hidden;
+    }
+    .skill-bar .fill{
+      height:100%;width:0;border-radius:20px;
+      background:linear-gradient(90deg,#38bdf8,#9333ea,#f59e0b);
+      transition:width 2s ease;
+    }
+    .skill-bar .percent{
+      position:absolute;right:10px;top:50%;transform:translateY(-50%);
+      color:#fff;font-size:0.9rem;
+    }
+
+    /* HEX GRID */
+    .hex-skill-grid{display:flex;justify-content:center;flex-wrap:wrap;gap:25px;margin-top:30px;}
+    .hex{
+      width:110px;height:125px;
+      background:linear-gradient(135deg,#38bdf8,#9333ea);
+      clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+      display:flex;align-items:center;justify-content:center;
+      transition:0.3s;
+    }
+    .hex img{width:60px;height:60px;filter:drop-shadow(0 0 10px #fff);}
+    .hex:hover{transform:scale(1.1);box-shadow:0 0 25px #9333ea;}
+
+    /* PROJECTS */
+    .project-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;}
+    .project-card{
+      background:rgba(30,41,59,0.7);
+      border:2px solid transparent;
+      border-image:linear-gradient(90deg,#38bdf8,#9333ea) 1;
+      padding:25px;border-radius:20px;
+      box-shadow:0 0 25px rgba(56,189,248,0.3);
+      transition:transform 0.5s, box-shadow 0.5s;
+    }
+    .skill{
+      text-decoration: none;
+      color: #0041d8;
+    }
+    .project-card:hover{transform:translateY(-12px) scale(1.05);box-shadow:0 0 35px rgba(147,51,234,0.7);}
+    .project-card h3{margin-bottom:12px;color:#38bdf8;}
+
+    /* CONTACT */
+    form{display:flex;flex-direction:column;gap:20px;}
+    input,textarea{padding:14px;border:none;border-radius:10px;background:rgba(30,41,59,0.8);color:#fff;}
+    button{padding:14px;border:none;border-radius:10px;background:linear-gradient(90deg,#38bdf8,#9333ea);color:#fff;font-weight:bold;cursor:pointer;transition:0.3s;}
+    button:hover{transform:scale(1.1);box-shadow:0 0 30px #9333ea;}
+
+    /* FOOTER */
+    footer{text-align:center;padding:30px;background:#0f172a;color:#94a3b8;}
+
+    /* ANIMATIONS */
+    @keyframes typing{from{width:0;}to{width:100%;}}
+    @keyframes blink{50%{border-color:transparent;}}
+    @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-15px);}}
+
+    @media(max-width:768px){.hero h1{font-size:2rem;}}
+  </style>
+</head>
+<body>
+
+  <!-- BACKGROUND -->
+  <div id="particles-js"></div>
+<!-- NAVBAR -->
+<header>
+  <nav class="navbar">
+    <h1 class="logo">MyPortfolio</h1>
+    <div class="menu-toggle" id="menu-toggle">
+      ☰
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li>
+        <a href="Nayan-Naskar.pdf" download class="cv-btn">Download CV</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <img src="WhatsApp Image 2025-09-04 at 00.12.08_286d9d84.jpg" alt="My Picture">
+    <h1>Hello, I'm <span>Nayan Naskar</span></h1>
+    <p class="typewriter">FullStack Developer ✨</p>
+    <a href="#projects" class="btn">See My Work</a>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2>⚡ My Skills</h2>
+    <div class="skill-tabs">
+      <button class="tab-btn active" data-tab="frontend">Frontend</button>
+      <button class="tab-btn" data-tab="backend">Backend</button>
+      <button class="tab-btn" data-tab="database">Database</button>
+      <button class="tab-btn" data-tab="other">Other</button>
+    </div>
+
+    <div class="skills-section">
+      <!-- FRONTEND -->
+      <div class="tab-content active" id="frontend">
+        <div class="skills-bars">
+          <div class="skill-bar" data-percent="95"><span>HTML</span><div class="bar"><div class="fill"></div><span class="percent">0%</span></div></div>
+          <div class="skill-bar" data-percent="90"><span>CSS</span><div class="bar"><div class="fill"></div><span class="percent">0%</span></div></div>
+          <div class="skill-bar" data-percent="80"><span>JavaScript</span><div class="bar"><div class="fill"></div><span class="percent">0%</span></div></div>
+          <div class="skill-bar" data-percent="80"><span>Bootstrap</span><div class="bar"><div class="fill"></div><span class="percent">0%</span></div></div>
+        </div>
+        <div class="hex-skill-grid">
+          <div class="hex"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"></div>
+          <div class="hex"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"></div>
+          <div class="hex"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"></div>
+          <div class="hex"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"></div>
+        </div>
+      </div>
+      <!-- BACKEND -->
+      <div class="tab-content" id="backend">
+        <div class="skills-bars">
+          <div class="skill-bar" data-percent="75"><span>Node.js</span><div class="bar"><div class="fill"></div><span class="percent">0%</span></div></div>
+          <div class="skill-bar" data-percent="70"><span>PHP</span><div class="bar"><div class="fill"></div><span class="percent">0%</span></div></div>
+        </div>
+        <div class="hex-skill-grid">
+          <div class="hex"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"></div>
+          <div class="hex"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"></div>
+        </div>
+      </div>
+      <!-- DATABASE -->
+      <div class="tab-content" id="database">
+        <div class="skills-bars">
+          <div class="skill-bar" data-percent="80"><span>MySQL</span><div class="bar"><div class="fill"></div><span class="percent">0%</span></div></div>
+        </div>
+        <div class="hex-skill-grid">
+          <div class="hex"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"></div>
+        </div>
+      </div>
+      <!-- OTHER -->
+      <div class="tab-content" id="other">
+        <div class="skills-bars">
+          <div class="skill-bar" data-percent="85"><span>Python</span><div class="bar"><div class="fill"></div><span class="percent">0%</span></div></div>
+          <div class="skill-bar" data-percent="85"><span>Flask</span><div class="bar"><div class="fill"></div><span class="percent">0%</span></div></div>
+          <div class="skill-bar" data-percent="65"><span>C</span><div class="bar"><div class="fill"></div><span class="percent">0%</span></div></div>
+        </div>
+        <div class="hex-skill-grid">
+          <div class="hex"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"></div>
+          <div class="hex"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg"></div>
+          <div class="hex"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"></div>
+        </div>
+      </div>
+      <!-- Radar Chart -->
+     
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-grid">
+     <a href="https://nayan743374.github.io/Image_to_pdf_Convert-/" class="skill"> <div class="project-card"><h3>PDF Converting</h3><p>Simple web page</p></div></a>
+    <a href="https://nayan743374.github.io/Tourist_Frontend/"class="skill"> <div class="project-card"><h3>Tourist_Frontend</h3><p>Simple web page</p></div></a>
+     <a href="https://github.com/nayan743374"class="skill"><div class="project-card"><h3>My GutHub</h3><p>see my all projects.</p></div></a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message"></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p> Nayan Naskar</p>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    /* Responsive Navbar */
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
+
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+});
+
+    /* Particles */
+    particlesJS("particles-js",{
+      "particles":{"number":{"value":80},"color":{"value":"#38bdf8"},"shape":{"type":"circle"},
+      "opacity":{"value":0.6,"random":true},"size":{"value":4,"random":true},
+      "line_linked":{"enable":true,"distance":150,"color":"#9333ea","opacity":0.5,"width":1},
+      "move":{"enable":true,"speed":3}}
+    });
+
+    /* Tabs */
+    const tabBtns=document.querySelectorAll(".tab-btn");
+    const tabContents=document.querySelectorAll(".tab-content");
+    tabBtns.forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        tabBtns.forEach(b=>b.classList.remove("active"));
+        tabContents.forEach(c=>c.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById(btn.dataset.tab).classList.add("active");
+      });
+    });
+
+    /* Skill Bars + Counter */
+    function animateSkills(){
+      document.querySelectorAll(".skill-bar").forEach(bar=>{
+        const percent=bar.getAttribute("data-percent");
+        const fill=bar.querySelector(".fill");
+        const text=bar.querySelector(".percent");
+        let value=0;
+        let interval=setInterval(()=>{
+          if(value>=percent){clearInterval(interval);}
+          else{value++;fill.style.width=value+"%";text.textContent=value+"%";}
+        },15);
+      });
+    }
+    window.addEventListener("scroll",()=>{
+      if(document.querySelector("#skills").getBoundingClientRect().top<window.innerHeight*0.8){
+        animateSkills();
+      }
+    });
+
+    /* Radar Chart */
+    const ctx=document.getElementById("radarSkills").getContext("2d");
+    new Chart(ctx,{
+      type:"radar",
+      data:{labels:["HTML","CSS","JS","Node.js","Python","MySQL","PHP","C"],
+        datasets:[{label:"Skill Level",
+          data:[95,90,80,75,85,80,70,65],
+          backgroundColor:"rgba(147,51,234,0.3)",borderColor:"#38bdf8",
+          pointBackgroundColor:"#f59e0b",borderWidth:2}]},
+      options:{scales:{r:{angleLines:{color:"rgba(255,255,255,0.2)"},grid:{color:"rgba(255,255,255,0.2)"},
+        pointLabels:{color:"#f1f5f9"},ticks:{display:false}}},plugins:{legend:{labels:{color:"#fff"}}}}
+    });
+  </script>
+</body>
+</html>
